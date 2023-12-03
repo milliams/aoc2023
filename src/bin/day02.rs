@@ -1,6 +1,5 @@
 use anyhow::{Context, Result};
 use aoc_2023::read_lines;
-use format as f;
 use itertools::Itertools;
 use std::io::BufRead;
 
@@ -28,7 +27,6 @@ impl Game {
                     let mut set = Set::default();
                     s.split(',').for_each(|c| {
                         let (count, colour) = c
-                            .trim()
                             .split_whitespace()
                             .collect_tuple()
                             .context("Not count and colour")

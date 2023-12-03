@@ -17,31 +17,30 @@ fn first_last_digit_to_int(line: &str) -> Result<u32> {
 
 fn first_last_digits_words_to_int(line: &str) -> Result<u32> {
     let digits: Vec<u32> = (0..line.len())
-        .map(|i| {
+        .filter_map(|i| {
             let s = &line.to_string()[i..];
-            if s.starts_with("one") || s.starts_with("1") {
+            if s.starts_with("one") || s.starts_with('1') {
                 Some(1)
-            } else if s.starts_with("two") || s.starts_with("2") {
+            } else if s.starts_with("two") || s.starts_with('2') {
                 Some(2)
-            } else if s.starts_with("three") || s.starts_with("3") {
+            } else if s.starts_with("three") || s.starts_with('3') {
                 Some(3)
-            } else if s.starts_with("four") || s.starts_with("4") {
+            } else if s.starts_with("four") || s.starts_with('4') {
                 Some(4)
-            } else if s.starts_with("five") || s.starts_with("5") {
+            } else if s.starts_with("five") || s.starts_with('5') {
                 Some(5)
-            } else if s.starts_with("six") || s.starts_with("6") {
+            } else if s.starts_with("six") || s.starts_with('6') {
                 Some(6)
-            } else if s.starts_with("seven") || s.starts_with("7") {
+            } else if s.starts_with("seven") || s.starts_with('7') {
                 Some(7)
-            } else if s.starts_with("eight") || s.starts_with("8") {
+            } else if s.starts_with("eight") || s.starts_with('8') {
                 Some(8)
-            } else if s.starts_with("nine") || s.starts_with("9") {
+            } else if s.starts_with("nine") || s.starts_with('9') {
                 Some(9)
             } else {
                 None
             }
         })
-        .filter_map(|v| v)
         .collect();
     let first = digits.first().context("No digits found")?;
     let last = match digits.last() {
